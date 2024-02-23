@@ -3,6 +3,8 @@ import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs";
 import { IconBadge } from "@/components/IconBadges";
 import { LayoutDashboard } from "lucide-react";
+import { TitleForm } from "./_components/TitleForm";
+import { DescriptionForm } from "./_components/DescriptionForm";
 
 const CourseIdPage = async ({
   params
@@ -59,6 +61,14 @@ const CourseIdPage = async ({
               Customize your course
             </h2>
           </div>
+          <TitleForm 
+            initialData={course}
+            courseId={course.id}
+          />
+          <DescriptionForm 
+            initialData={course}
+            courseId={course.id}
+          />
         </div>
       </div>
     </div>
