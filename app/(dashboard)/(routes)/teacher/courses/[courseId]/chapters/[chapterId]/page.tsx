@@ -1,9 +1,12 @@
 import { IconBadge } from "@/components/IconBadges";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs";
-import { ArrowLeft, LayoutDashboard } from "lucide-react";
+import { ArrowLeft, Eye, LayoutDashboard } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { ChapterTitleForm } from "./_components/ChapterTitleForm";
+import { ChapterDescriptionForm } from "./_components/ChapterDescriptionForm";
+import { ChapterAccessForm } from "./_components/ChapterAccessForm";
 
 const ChapterIdPage = async ({
   params
@@ -73,7 +76,28 @@ const ChapterIdPage = async ({
                 Customize your chapter
               </h2>
             </div>
+            <ChapterTitleForm 
+              initialData={chapter}
+              courseId={params.courseId}
+              chapterId={params.chapterId}
+              />
+            <ChapterDescriptionForm 
+              initialData={chapter}
+              courseId={params.courseId}
+              chapterId={params.chapterId}
+            />
           </div>
+          <div className="flex items-center gap-x-2">
+            <IconBadge icon={Eye} />
+            <h2 className="text-xl">
+              Access Settings
+            </h2>
+          </div>
+          <ChapterAccessForm 
+            initialData={chapter}
+            courseId={params.courseId}
+            chapterId={params.chapterId}
+          />
         </div>
       </div>
     </div>
