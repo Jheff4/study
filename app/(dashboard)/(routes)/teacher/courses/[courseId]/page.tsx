@@ -65,6 +65,8 @@ const CourseIdPage = async ({
 
   const completionText = `(${completedFields}/${totalFields})`
 
+  const isComplete = requiredFields.every(Boolean);
+
   return ( 
     <div className="p-6">
       <div className="flex items-center justify-between">
